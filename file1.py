@@ -76,3 +76,16 @@ sns.countplot(x="preferred_category",hue="churned",data=df)
 plt.title("Preferred Category and Customer Churn")
 plt.show()
 
+
+#feature Engineering
+
+#1. Find how many days the customer has been with the business
+df["customer_lifetime_days"]=(df["last_purchase_date"]-df["signup_date"]).dt.days
+
+# Find how active the customer is based on orders and recency
+df["activity_score"]=df["num_orders"]/(df["recency_days"]+1)
+
+# Find the year when the customer signed up
+# This helps to compare customers based on signup year
+df["signup_year"]=df["signup_date"].dt.year
+print(df.head())
