@@ -5,6 +5,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 import pandas as pd
 import numpy as np
-df=pd.read_csv("")
+df=pd.read_csv("ecommerces.csv")
 print(df.info())
 print(df.describe())
+print(df.shape)
