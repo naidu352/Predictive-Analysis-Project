@@ -28,7 +28,7 @@ df["gender"]=df["gender"].fillna(df["gender"].mode()[0])
 df["country"]=df["country"].fillna(df["country"].mode()[0])
 df["device_type"]=df["device_type"].fillna(df["device_type"].mode()[0])
 df["preferred_category"]=df["preferred_category"].fillna(df["preferred_category"].mode()[0])
-
+#after preprocess
 df=df.drop_duplicates()
 print("Missing Values:")
 print(df.isnull().sum())
