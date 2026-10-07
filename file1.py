@@ -131,4 +131,4 @@ knn.fit(X_train,y_train)
 y_pred_knn=knn.predict(X_test)
 print("Knn Accuracy:",accuracy_score(y_test,y_pred_knn))
 
-print(df.info())
+print(df.shape)
