@@ -113,23 +113,14 @@ X_test=scaler.transform(X_test)
 
 #Model 1--- Logistic
 
-lr=LogisticRegression()
-lr.fit(X_train,y_train)
-y_pred_lr=lr.predict(X_test)
 
-print("Logistic Accuracy:",accuracy_score(y_test,y_pred_lr))
+print("decision accuracy:",accuracy_score(y_test,y_pred_dt))
+print("Accuracy:", accuracy_score(y_test, y_pred_dt))
+print("Precision:", precision_score(y_test, y_pred_dt, zero_division=0))
+print("Recall:", recall_score(y_test, y_pred_dt, zero_division=0))
+print("F1 Score:", f1_score(y_test, y_pred_dt, zero_division=0))
+print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred_dt))
 
-#Model 2--KNN
-# Find K value using square root of training samples
-k=int(np.sqrt(X_train.shape[0]))
-
-print("K value:",k)
-knn=KNeighborsClassifier(n_neighbors=k,metric="euclidean")
-knn.fit(X_train,y_train)
-
-# Predict test data
-y_pred_knn=knn.predict(X_test)
-print("Knn Accuracy:",accuracy_score(y_test,y_pred_knn))
 
 # Model 4 -- Naive Bayes
 
@@ -139,3 +130,8 @@ y_pred_nb=nb.predict(X_test)
 print("Navies Accuracy:",accuracy_score(y_test,y_pred_nb))
 print(confusion_matrix(y_test,y_pred_nb))
 print(classification_report(y_test,y_pred_nb,zero_division=0))
+print("Accuracy:", accuracy_score(y_test, y_pred_nb))
+print("Precision:", precision_score(y_test, y_pred_nb, zero_division=0))
+print("Recall:", recall_score(y_test, y_pred_nb, zero_division=0))
+print("F1 Score:", f1_score(y_test, y_pred_nb, zero_division=0))
+print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred_nb))
