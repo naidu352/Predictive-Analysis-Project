@@ -131,11 +131,9 @@ knn.fit(X_train,y_train)
 y_pred_knn=knn.predict(X_test)
 print("Knn Accuracy:",accuracy_score(y_test,y_pred_knn))
 
-# Model 4 -- Naive Bayes
+#Model 3 -- Decision tree
+dt=DecisionTreeClassifier(random_state=42)
+dt.fit(X_train,y_train)
+y_pred_dt=dt.predict(X_test)
 
-nb=GaussianNB()
-nb.fit(X_train,y_train)
-y_pred_nb=nb.predict(X_test)
-print("Navies Accuracy:",accuracy_score(y_test,y_pred_nb))
-print(confusion_matrix(y_test,y_pred_nb))
-print(classification_report(y_test,y_pred_nb,zero_division=0))
+print("decision accuracy:",accuracy_score(y_test,y_pred_dt))
