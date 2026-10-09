@@ -9,7 +9,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report, precision_score, recall_score, f1_score, roc_auc_score
-
+from sklearn.naive_bayes import GaussianNB
 df=pd.read_csv("ecommerces.csv")
 print(df.head())
 print(df.info())
@@ -131,4 +131,11 @@ knn.fit(X_train,y_train)
 y_pred_knn=knn.predict(X_test)
 print("Knn Accuracy:",accuracy_score(y_test,y_pred_knn))
 
-print(df.info())
+# Model 4 -- Naive Bayes
+
+nb=GaussianNB()
+nb.fit(X_train,y_train)
+y_pred_nb=nb.predict(X_test)
+print("Navies Accuracy:",accuracy_score(y_test,y_pred_nb))
+print(confusion_matrix(y_test,y_pred_nb))
+print(classification_report(y_test,y_pred_nb,zero_division=0))
