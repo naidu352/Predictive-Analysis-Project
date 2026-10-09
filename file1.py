@@ -9,7 +9,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report, precision_score, recall_score, f1_score, roc_auc_score
-
+from sklearn.naive_bayes import GaussianNB
 df=pd.read_csv("ecommerces.csv")
 print(df.head())
 print(df.info())
