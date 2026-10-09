@@ -131,4 +131,9 @@ knn.fit(X_train,y_train)
 y_pred_knn=knn.predict(X_test)
 print("Knn Accuracy:",accuracy_score(y_test,y_pred_knn))
 
-print(df.info())
+#Model 3 -- Decision tree
+dt=DecisionTreeClassifier(random_state=42)
+dt.fit(X_train,y_train)
+y_pred_dt=dt.predict(X_test)
+
+print("decision accuracy:",accuracy_score(y_test,y_pred_dt))
