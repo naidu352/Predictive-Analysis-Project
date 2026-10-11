@@ -135,3 +135,5 @@ print("Precision:", precision_score(y_test, y_pred_nb, zero_division=0))
 print("Recall:", recall_score(y_test, y_pred_nb, zero_division=0))
 print("F1 Score:", f1_score(y_test, y_pred_nb, zero_division=0))
 print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred_nb))
+
+print(df.info())
