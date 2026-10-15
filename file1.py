@@ -135,3 +135,37 @@ print("Precision:", precision_score(y_test, y_pred_nb, zero_division=0))
 print("Recall:", recall_score(y_test, y_pred_nb, zero_division=0))
 print("F1 Score:", f1_score(y_test, y_pred_nb, zero_division=0))
 print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred_nb))
+
+#MODEL comparasion
+
+models = ["Logistic Regression", "KNN", "Decision Tree", "Naive Bayes"]
+
+predictions = [y_pred_lr, y_pred_knn, y_pred_dt, y_pred_nb]
+
+results = []
+
+for name, pred in zip(models, predictions):
+    results.append({
+        "Model": name,
+        "Accuracy": accuracy_score(y_test, pred),
+        "Precision": precision_score(y_test, pred, zero_division=0),
+        "Recall": recall_score(y_test, pred, zero_division=0),
+        "F1 Score": f1_score(y_test, pred, zero_division=0)
+    })
+
+results_df = pd.DataFrame(results)
+
+print(results_df.round(3).to_string(index=False))
+
+
+# To identify the model with the highest F1-score
+# This helps select a model based on the balance between precision and recall
+
+best_model = results_df.loc[results_df["F1 Score"].idxmax()]
+
+print("\nBest Model Based on F1 Score:", best_model["Model"])
+print("Accuracy:", round(best_model["Accuracy"], 3))
+print("Precision:", round(best_model["Precision"], 3))
+print("Recall:", round(best_model["Recall"], 3))
+print("F1 Score:", round(best_model["F1 Score"], 3))
+
