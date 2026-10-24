@@ -122,6 +122,33 @@ print("F1 Score:", f1_score(y_test, y_pred_dt, zero_division=0))
 print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred_dt))
 
 
+#Model 2--KNN
+k=int(np.sqrt(X_train.shape[0]))
+print("K value:",k)
+knn=KNeighborsClassifier(n_neighbors=k,metric="euclidean")
+knn.fit(X_train,y_train)
+y_pred_knn=knn.predict(X_test)
+print("Knn Accuracy:",accuracy_score(y_test,y_pred_knn))
+print("Accuracy:", accuracy_score(y_test, y_pred_knn))
+print("Precision:", precision_score(y_test, y_pred_knn, zero_division=0))
+print("Recall:", recall_score(y_test, y_pred_knn, zero_division=0))
+print("F1 Score:", f1_score(y_test, y_pred_knn, zero_division=0))
+print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred_knn))
+
+#Model 3 -- Decision tree
+dt=DecisionTreeClassifier(random_state=42)
+dt.fit(X_train,y_train)
+y_pred_dt=dt.predict(X_test)
+
+print("decision accuracy:",accuracy_score(y_test,y_pred_dt))
+print("Accuracy:", accuracy_score(y_test, y_pred_dt))
+print("Precision:", precision_score(y_test, y_pred_dt, zero_division=0))
+print("Recall:", recall_score(y_test, y_pred_dt, zero_division=0))
+print("F1 Score:", f1_score(y_test, y_pred_dt, zero_division=0))
+print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred_dt))
+
+
+
 # Model 4 -- Naive Bayes
 
 nb=GaussianNB()
@@ -136,36 +163,16 @@ print("Recall:", recall_score(y_test, y_pred_nb, zero_division=0))
 print("F1 Score:", f1_score(y_test, y_pred_nb, zero_division=0))
 print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred_nb))
 
-#MODEL comparasion
+# Key Findings
+print("\nKey Findings:")
+print("Customer churn is analysed using spending, recency, and membership.")
+print("Four machine learning models are used to predict customer churn.")
 
-models = ["Logistic Regression", "KNN", "Decision Tree", "Naive Bayes"]
+# Conclusion
+print("\nConclusion:")
+print("ML helps identify customers who may leave the business.")
 
-predictions = [y_pred_lr, y_pred_knn, y_pred_dt, y_pred_nb]
-
-results = []
-
-for name, pred in zip(models, predictions):
-    results.append({
-        "Model": name,
-        "Accuracy": accuracy_score(y_test, pred),
-        "Precision": precision_score(y_test, pred, zero_division=0),
-        "Recall": recall_score(y_test, pred, zero_division=0),
-        "F1 Score": f1_score(y_test, pred, zero_division=0)
-    })
-
-results_df = pd.DataFrame(results)
-
-print(results_df.round(3).to_string(index=False))
-
-
-# To identify the model with the highest F1-score
-# This helps select a model based on the balance between precision and recall
-
-best_model = results_df.loc[results_df["F1 Score"].idxmax()]
-
-print("\nBest Model Based on F1 Score:", best_model["Model"])
-print("Accuracy:", round(best_model["Accuracy"], 3))
-print("Precision:", round(best_model["Precision"], 3))
-print("Recall:", round(best_model["Recall"], 3))
-print("F1 Score:", round(best_model["F1 Score"], 3))
-
+# Recommendations
+print("\nRecommendations:")
+print("Offer discounts to customers who may churn.")
+print("Provide rewards to encourage repeat purchases.")
