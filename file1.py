@@ -173,6 +173,6 @@ print("\nConclusion:")
 print("ML helps identify customers who may leave the business.")
 
 # Recommendations
-print("\nRecommendations:")
+print("\nRecommendation:")
 print("Offer discounts to customers who may churn.")
 print("Provide rewards to encourage repeat purchases.")
